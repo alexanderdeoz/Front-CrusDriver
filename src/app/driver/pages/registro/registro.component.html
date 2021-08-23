@@ -1,0 +1,191 @@
+<td>
+    Formulario de Registro deConductores
+</td>
+
+
+
+<div class="p-fluid">
+
+    <form [formGroup]="formDriver" (ngSubmit)="onSubmit()">
+
+
+        <p-card>
+            <ng-template pTemplate="header">
+
+
+                <div class="p-field">
+                    <label for="id"> ID:</label>
+                    <input pInputText type="text" id="id" formControlName="id">
+                </div>
+
+
+
+                <div *ngIf="idField.invalid && (idField.touched || idField.dirty)">
+
+                    <small *ngIf="idField.errors?.required" class="p-error">
+                        campo requerido
+                    </small>
+                    <small *ngIf="idField.errors?.maxlength" class="p-error">
+                        maximo de caracteres es 10
+                    </small>
+                    <small *ngIf="idField.errors?.minlength" class="p-error">
+                        minimo de caracteres es 5
+                    </small>
+                </div>
+
+
+            </ng-template>
+
+
+
+
+            <div class="p-field">
+                <label for="name"> NAME:</label>
+                <input pInputText type="text" id="name" formControlName="name">
+            </div>
+
+
+            <div *ngIf="nameField.invalid && (nameField.touched || nameField.dirty)">
+
+                <small *ngIf="nameField.errors?.required" class="p-error">
+                    campo requerido
+                </small>
+                <small *ngIf="nameField.errors?.maxlength" class="p-error">
+                    maximo de caracteres es 100
+                </small>
+                <small *ngIf="nameField.errors?.minlength" class="p-error">
+                    minimo de caracteres es 5
+                </small>
+            </div>
+
+
+
+
+
+
+            <div class="p-field">
+                <label for="birthday"> BIRTHDAY:</label>
+                <input pInputText type="text" id="birthday" formControlName="birthday">
+            </div>
+
+
+            <div *ngIf="birthdayField.invalid && (birthdayField.touched || birthdayField.dirty)">
+                <small *ngIf="birthdayField.errors?.required" class="p-error">
+                    campo requerido
+                </small>
+            </div>
+
+
+
+
+
+
+            <div class="p-field">
+                <label for="joined_date"> joined_date:</label>
+                <input pInputText type="date" id="joined_date" formControlName="joined_date">
+            </div>
+
+
+            <div *ngIf="joined_dateField.invalid && (joined_dateField.touched || joined_dateField.dirty)">
+
+                <small *ngIf="joined_dateField.errors?.required" class="p-error">
+                    campo requerido
+                </small>
+            </div>
+
+
+
+
+
+
+            <div class="p-field">
+                <label for="email"> email:</label>
+                <input pInputText type="text" id="email" formControlName="email">
+            </div>
+
+
+            <div *ngIf="emailField.invalid && (emailField.touched || emailField.dirty)">
+
+                <small *ngIf="emailField.errors?.required" class="p-error">
+                    campo requerido
+                </small>
+
+                <small *ngIf="emailField.errors?.email" class="p-error">
+                    No es un correo electronico
+                </small>
+            </div>
+
+
+
+
+
+            <div class="p-field">
+                <label for="phone"> phone:</label>
+                <input pInputText type="text" id="phone" formControlName="phone">
+            </div>
+
+
+            <div *ngIf="phoneField.invalid && (phoneField.touched || phoneField.dirty)">
+
+                <small *ngIf="phoneField.errors?.required" class="p-error">
+                    campo requerido
+                </small>
+                <small *ngIf="phoneField.errors?.maxlength" class="p-error">
+                    maximo de caracteres es 10
+                </small>
+                <small *ngIf="phoneField.errors?.minlength" class="p-error">
+                    minimo de caracteres es 10
+                </small>
+
+            </div>
+
+
+
+            <div class="p-field">
+                <label for="deleted_at"> deleted_at:</label>
+                <input pInputText type="date" id="deleted_at" formControlName="deleted_at">
+            </div>
+
+
+            <div class="p-field">
+                <label for="created_at"> created_at:</label>
+                <input pInputText type="date" id="created_at" formControlName="created_at">
+            </div>
+
+
+
+
+            <div class="p-field">
+                <label for="updated_at"> updated_at:</label>
+                <input pInputText type="date" id="updated_at" formControlName="updated_at">
+            </div>
+
+
+
+            <div *ngIf="updated_atField.invalid && (updated_atField.touched || updated_atField.dirty)">
+
+                <small *ngIf="updated_atField.errors?.required" class="p-error">
+                    campo requerido
+                </small>
+
+            </div>
+
+
+
+
+            <div class="p-field">
+                <button pButton type="submit" label="Registrar" icon="pi pi-save"> </button>
+            </div>
+
+
+
+
+
+
+        </p-card>
+
+
+
+    </form>
+
+</div>
