@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DriverModel } from '../../../models/index'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import {DriverHttpService } from '../../../services/driver-http.service'
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -8,17 +9,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 })
 export class ListComponent implements OnInit {
 
-  driver: DriverModel;
+  driver: DriverModel={};
   drivers: DriverModel[] = [];
   formDriver: FormGroup;
 
 
 
-  constructor(private formBuilder: FormBuilder) {  // importacion para el formulacio reactivo FormBuilder
+  constructor(
+    private formBuilder: FormBuilder,// importacion para el formulacio reactivo FormBuilder
+    private driverHttpService:DriverHttpService 
+    ) {  
 
 
     this.formDriver = this.newFormDriverList();
-
+/*
     this.driver = {
       id: 123,
       name: 'Steven',
@@ -27,10 +31,7 @@ export class ListComponent implements OnInit {
       email: 'sad.chinchin@yavirac.edu.ec',
       phone: '0963707783',
     };
-
-
-
-
+*/
   }
 
   ngOnInit(): void {
@@ -40,6 +41,7 @@ export class ListComponent implements OnInit {
   newFormDriverList(): FormGroup {
     return this.formBuilder.group(
       {
+        
         id: [null, [Validators.required, Validators.maxLength(10), Validators.minLength(5)]],
         name: [null, [Validators.required, Validators.maxLength(100), Validators.minLength(5)]],
         birthday: [null, [Validators.required]],
@@ -49,14 +51,19 @@ export class ListComponent implements OnInit {
         deleted_at: [null],
         created_at: [null],
         updated_at: [null]
+        
       }
     )
   }
 
+
+
   getDrivers(): void {
-
-    this.drivers.push(this.driver);
-
+    this.driverHttpService.getall().subscribe(
+     response=>{console.log(response);
+ 
+    },
+    error=>{console.log(error)});
   }
 
   onSubmit() {

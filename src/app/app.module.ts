@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-
+import { HttpClientModule } from '@angular/common/http'
 //ngPrime
 import {ButtonModule} from 'primeng/button';
 //components
@@ -15,6 +15,7 @@ import { MainComponent } from './main/main.component';
     MainComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ButtonModule

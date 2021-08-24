@@ -1,9 +1,14 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
+const WEB ="http://ubergas.test";
+const API ="http://ubergas.test/api"
 export const environment = {
-  production: false
+  production: false,
+  WEB,
+  API_URL_AUTHENTICATION: API + 'authentication/',
+  API_URL_PRIVATE: API + 'private/',
+  API_URL_PUBLIC: API + 'public/',
 };
 
 /*
